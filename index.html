@@ -2,160 +2,104 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Onur Kaya - Profesyonel Elektrik Hizmetleri</title>
     <style>
         :root {
             --primary-yellow: #ffcc00;
-            --dark-bg: #1a1a1a;
-            --text-white: #ffffff;
+            --dark-bg: #121212;
+            --whatsapp-green: #25d366;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
 
-        body {
-            background-color: var(--dark-bg);
-            color: var(--text-white);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
+        body { background-color: var(--dark-bg); color: white; line-height: 1.6; }
 
-        /* Hero Bölümü */
         .hero {
-            width: 100%;
-            height: 60vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=1000');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-            border-bottom: 5px solid var(--primary-yellow);
+            height: 50vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1000');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; border-bottom: 4px solid var(--primary-yellow);
         }
 
-        .hero h1 {
-            font-size: 3rem;
-            color: var(--primary-yellow);
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
-            margin-bottom: 10px;
-        }
+        .hero h1 { color: var(--primary-yellow); font-size: 2.5rem; margin-bottom: 10px; }
 
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-        }
+        .services { padding: 30px 15px; display: flex; flex-direction: column; gap: 15px; margin-bottom: 120px; }
 
-        /* Hizmetler */
-        .services {
-            padding: 40px 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            width: 100%;
-            max-width: 1000px;
-        }
+        .card { background: #1e1e1e; padding: 20px; border-radius: 12px; border-left: 5px solid var(--primary-yellow); }
 
-        .service-card {
-            background: #2a2a2a;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            border: 1px solid #333;
-        }
-
-        .service-card i {
-            font-size: 40px;
-            color: var(--primary-yellow);
-            margin-bottom: 15px;
-        }
-
-        /* Arama Butonu */
-        .call-btn {
+        /* İletişim Butonları Paneli */
+        .contact-bar {
             position: fixed;
-            bottom: 30px;
-            background-color: var(--primary-yellow);
-            color: black;
-            text-decoration: none;
-            padding: 20px 40px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.5rem;
+            bottom: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.9);
+            padding: 15px;
             display: flex;
-            align-items: center;
             gap: 10px;
-            box-shadow: 0 10px 20px rgba(255, 204, 0, 0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
             z-index: 1000;
         }
 
-        .call-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 25px rgba(255, 204, 0, 0.5);
-        }
-
-        .call-icon {
-            width: 30px;
-            height: 30px;
-            fill: black;
-        }
-
-        /* Footer */
-        footer {
-            margin-top: auto;
-            padding: 20px;
+        .btn {
+            flex: 1;
+            padding: 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             font-size: 0.9rem;
-            color: #777;
         }
 
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 2rem; }
-            .call-btn { width: 90%; justify-content: center; bottom: 20px; }
-        }
+        .call-btn { background: var(--primary-yellow); color: black; }
+        .msg-btn { background: var(--whatsapp-green); color: white; }
+
+        svg { width: 20px; height: 20px; fill: currentColor; }
     </style>
 </head>
 <body>
 
     <section class="hero">
         <h1>ONUR KAYA</h1>
-        <p>7/24 Acil Elektrik Arıza, Bakım ve Onarım Hizmetleri. Çekmeköy ve Çevresinde Güvenilir Çözümler.</p>
+        <p>7/24 Elektrik Arıza & Onarım</p>
+        <p style="font-size: 0.8rem; opacity: 0.8;">Hızlı • Güvenilir • Garantili</p>
     </section>
 
     <section class="services">
-        <div class="service-card">
-            <h3>Ev & Ofis Arıza</h3>
-            <p>Sigorta değişimi, kısa devre onarımı ve tesisat yenileme.</p>
+        <div class="card">
+            <h3>⚡ Acil Arıza Servisi</h3>
+            <p>Sigorta atması ve kablo yanmalarına anında müdahale.</p>
         </div>
-        <div class="service-card">
-            <h3>Aydınlatma</h3>
-            <p>Avize montajı, LED döşeme ve çevre aydınlatma sistemleri.</p>
+        <div class="card">
+            <h3>💡 Aydınlatma & Montaj</h3>
+            <p>Avize, LED şerit ve bahçe aydınlatma sistemleri.</p>
         </div>
-        <div class="service-card">
-            <h3>İnternet & Data</h3>
-            <p>İnternet kablosu çekimi, modem kurulumu ve jak çakımı.</p>
+        <div class="card">
+            <h3>🌐 İnternet & Uydu</h3>
+            <p>Kablo çekimi, sinyal sorunları ve modem kurulumu.</p>
         </div>
     </section>
 
-    <a href="tel:05352312457" class="call-btn">
-        <svg class="call-icon" viewBox="0 0 24 24">
-            <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z" />
-        </svg>
-        HEMEN ARA
-    </a>
+    <div class="contact-bar">
+        <a href="tel:05352312457" class="btn call-btn">
+            <svg viewBox="0 0 24 24"><path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/></svg>
+            HEMEN ARA
+        </a>
+        
+        <a href="https://wa.me/905352312457?text=Merhaba%20Onur%20Usta%2C%20bir%20elektrik%20arızası%20için%20yazıyorum." class="btn msg-btn">
+            <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42 1.56 1.56 2.41 3.63 2.41 5.83 0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.188 8.188 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.13 0-.35.05-.54.26-.19.21-.72.7-.72 1.7s.73 1.97.83 2.11c.11.14 1.43 2.19 3.47 3.07.48.21.86.34 1.15.44.49.15.93.13 1.29.08.39-.05 1.21-.5 1.38-.98.17-.48.17-.89.12-.98-.05-.08-.18-.13-.38-.23s-1.21-.6-1.4-.67-.32-.1-.47.12c-.15.21-.57.7-.7 1-.13.31-.26.35-.46.25-.19-.09-.82-.3-1.57-.97-.58-.52-.97-1.16-1.09-1.37-.12-.21-.01-.32.09-.42s.19-.23.29-.34c.1-.11.13-.19.2-.31.07-.12.03-.23-.02-.33-.05-.1-.47-1.14-.64-1.55-.17-.4-.34-.35-.47-.35z"/></svg>
+            WHATSAPP
+        </a>
+    </div>
 
-    <footer>
-        &copy; 2026 Onur Kaya Elektrik. Tüm hakları saklıdır.
+    <footer style="padding-bottom: 100px; text-align: center; font-size: 0.8rem; color: #555;">
+        &copy; 2026 Onur Kaya Elektrik.
     </footer>
 
 </body>
