@@ -3,133 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Onur Kaya Elektrik</title>
+    <title>Onur Kaya Elektrik - Market</title>
     <style>
         :root {
             --primary: #ffcc00;
             --dark: #0f0f0f;
+            --card-bg: #1a1a1a;
             --whatsapp: #25d366;
         }
 
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-            font-family: sans-serif; 
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+        body { background-color: var(--dark); color: white; overflow-x: hidden; width: 100%; }
+
+        /* Üst Bilgi Paneli (Görseldeki Kısım) */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            padding: 15px;
+            background: #fff; /* Görseldeki gibi beyaz arka plan */
+            color: #333;
         }
 
-        body { 
-            background-color: var(--dark); 
-            color: white; 
-            overflow-x: hidden; /* Yana kaymayı engeller */
-            width: 100%;
-        }
-
-        /* Hero Bölümü - Telefona Tam Sığar */
-        .hero {
-            width: 100%;
-            padding: 40px 20px;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
-                        url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=500');
-            background-size: cover;
+        .info-item {
             text-align: center;
-            border-bottom: 3px solid var(--primary);
-        }
-
-        .hero h1 { 
-            color: var(--primary); 
-            font-size: 1.8rem; 
-            margin-bottom: 8px;
-        }
-
-        .hero p { font-size: 0.9rem; opacity: 0.9; }
-
-        /* Kartlar - Genişlik %100 değil, ekrana sığacak şekilde */
-        .services { 
-            padding: 20px; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 12px;
-            margin-bottom: 100px; /* Butonların üstüne binmemesi için */
-        }
-
-        .card { 
-            background: #1a1a1a; 
-            padding: 15px; 
-            border-radius: 8px; 
-            border-left: 4px solid var(--primary);
-        }
-
-        .card h3 { font-size: 1.1rem; margin-bottom: 5px; color: var(--primary); }
-        .card p { font-size: 0.85rem; color: #ccc; }
-
-        /* Alt İletişim Çubuğu - Sığmayan Kısım Burasıydı */
-        .contact-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: #000;
             padding: 10px;
-            display: flex;
-            gap: 8px;
-            border-top: 1px solid #333;
-            z-index: 9999;
+            border: 1px solid #eee;
+            border-radius: 8px;
         }
 
-        .btn {
-            flex: 1; /* İki butonu eşit böler */
-            padding: 12px 5px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.85rem; /* Yazıyı biraz küçülttük ki sığsın */
+        .info-item img { width: 35px; margin-bottom: 5px; }
+        .info-item h4 { font-size: 0.75rem; color: #000; margin-bottom: 3px; }
+        .info-item p { font-size: 0.65rem; color: #666; line-height: 1.2; }
+
+        /* Hero / Başlık */
+        .shop-header {
+            padding: 20px;
+            text-align: center;
+            background: var(--dark);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .shop-header h1 { color: var(--primary); font-size: 1.5rem; }
+
+        /* Alışveriş Kartları */
+        .products {
+            padding: 15px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 100px;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #333;
+        }
+
+        .product-img {
+            width: 80px;
+            height: 80px;
+            background: #333;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 5px;
-            white-space: nowrap; /* Yazıyı alt satıra atmaz */
+            font-size: 2rem;
+        }
+
+        .product-info { padding-left: 15px; flex: 1; }
+        .product-info h3 { font-size: 1rem; margin-bottom: 5px; }
+        .product-info .price { color: var(--primary); font-weight: bold; font-size: 1.1rem; }
+
+        .buy-btn {
+            background: var(--primary);
+            color: #000;
+            padding: 8px 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        /* Sabit Alt İletişim */
+        .contact-bar {
+            position: fixed;
+            bottom: 0; width: 100%;
+            background: #000; padding: 10px;
+            display: flex; gap: 8px;
+            border-top: 1px solid #333;
+            z-index: 1000;
+        }
+
+        .btn {
+            flex: 1; padding: 12px; border-radius: 8px;
+            text-decoration: none; font-weight: bold; font-size: 0.85rem;
+            display: flex; align-items: center; justify-content: center; gap: 5px;
         }
 
         .call-btn { background: var(--primary); color: #000; }
         .msg-btn { background: var(--whatsapp); color: #fff; }
-
-        svg { width: 18px; height: 18px; fill: currentColor; }
     </style>
 </head>
 <body>
 
-    <section class="hero">
-        <h1>ONUR KAYA</h1>
-        <p>⚡ 7/24 Profesyonel Elektrik Servisi</p>
-        <p>Hızlı Müdahale • Güvenli İşçilik</p>
-    </section>
+    <div class="info-grid">
+        <div class="info-item">
+            <h4 style="color:#f39c12">🚚 Adrese Teslim</h4>
+            <p>İstanbul Anadolu Yakası</p>
+        </div>
+        <div class="info-item">
+            <h4 style="color:#f39c12">🤝 Güvenli Ödeme</h4>
+            <p>Kapıda Güvenli Ödeme</p>
+        </div>
+        <div class="info-item">
+            <h4 style="color:#f39c12">😊 %100 Memnuniyet</h4>
+            <p>Mutlu Müşteriler</p>
+        </div>
+        <div class="info-item">
+            <h4 style="color:#f39c12">💬 Canlı Destek</h4>
+            <p>7/24 Özel Destek</p>
+        </div>
+    </div>
 
-    <section class="services">
-        <div class="card">
-            <h3>Acil Arıza</h3>
-            <p>Sigorta, priz ve tesisat sorunlarına kesin çözüm.</p>
+    <div class="shop-header">
+        <h1>ONUR KAYA MARKET</h1>
+    </div>
+
+    <section class="products">
+        <div class="product-card">
+            <div class="product-img">🔌</div>
+            <div class="product-info">
+                <h3>Sigorta Kutusu Değişimi</h3>
+                <p class="price">450 TL'den başlayan</p>
+                <a href="https://wa.me/905352312457?text=Sigorta%20degisimi%20icin%20bilgi%20almak%20istiyorum" class="buy-btn">FİYAT AL</a>
+            </div>
         </div>
-        <div class="card">
-            <h3>Aydınlatma</h3>
-            <p>Avize montajı ve dekoratif LED sistemleri.</p>
+
+        <div class="product-card">
+            <div class="product-img">💡</div>
+            <div class="product-info">
+                <h3>LED Panel (60x60)</h3>
+                <p class="price">320 TL / Adet</p>
+                <a href="https://wa.me/905352312457?text=Led%20panel%20siparis%20etmek%20istiyorum" class="buy-btn">SİPARİŞ VER</a>
+            </div>
         </div>
-        <div class="card">
-            <h3>İnternet / Uydu</h3>
-            <p>İnternet arızaları ve kablo çekim işlemleri.</p>
+        
+        <div class="product-card">
+            <div class="product-img">🛠️</div>
+            <div class="product-info">
+                <h3>Komple Tesisat Bakımı</h3>
+                <p class="price">Ücretsiz Keşif</p>
+                <a href="https://wa.me/905352312457?text=Ucretsiz%20kesif%20randevusu%20istiyorum" class="buy-btn">RANDEVU AL</a>
+            </div>
         </div>
     </section>
 
     <div class="contact-bar">
-        <a href="tel:05352312457" class="btn call-btn">
-            <svg viewBox="0 0 24 24"><path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/></svg>
-            HEMEN ARA
-        </a>
-        
-        <a href="https://wa.me/905352312457?text=Merhaba%20Onur%20Usta" class="btn msg-btn">
-            <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42 1.56 1.56 2.41 3.63 2.41 5.83 0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.188 8.188 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.13 0-.35.05-.54.26-.19.21-.72.7-.72 1.7s.73 1.97.83 2.11c.11.14 1.43 2.19 3.47 3.07.48.21.86.34 1.15.44.49.15.93.13 1.29.08.39-.05 1.21-.5 1.38-.98.17-.48.17-.89.12-.98-.05-.08-.18-.13-.38-.23s-1.21-.6-1.4-.67-.32-.1-.47.12c-.15.21-.57.7-.7 1-.13.31-.26.35-.46.25-.19-.09-.82-.3-1.57-.97-.58-.52-.97-1.16-1.09-1.37-.12-.21-.01-.32.09-.42s.19-.23.29-.34c.1-.11.13-.19.2-.31.07-.12.03-.23-.02-.33-.05-.1-.47-1.14-.64-1.55-.17-.4-.34-.35-.47-.35z"/></svg>
-            WHATSAPP
-        </a>
+        <a href="tel:05352312457" class="btn call-btn">📞 HEMEN ARA</a>
+        <a href="https://wa.me/905352312457" class="btn msg-btn">💬 WHATSAPP</a>
     </div>
 
 </body>
