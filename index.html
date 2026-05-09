@@ -3,86 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Onur Kaya - Profesyonel Elektrik Hizmetleri</title>
+    <title>Onur Kaya Elektrik</title>
     <style>
         :root {
-            --primary-yellow: #ffcc00;
-            --dark-bg: #121212;
-            --whatsapp-green: #25d366;
+            --primary: #ffcc00;
+            --dark: #0f0f0f;
+            --whatsapp: #25d366;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: sans-serif; 
+        }
 
-        body { background-color: var(--dark-bg); color: white; line-height: 1.6; }
+        body { 
+            background-color: var(--dark); 
+            color: white; 
+            overflow-x: hidden; /* Yana kaymayı engeller */
+            width: 100%;
+        }
 
+        /* Hero Bölümü - Telefona Tam Sığar */
         .hero {
-            height: 50vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1000');
-            background-size: cover; background-position: center;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; border-bottom: 4px solid var(--primary-yellow);
+            width: 100%;
+            padding: 40px 20px;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=500');
+            background-size: cover;
+            text-align: center;
+            border-bottom: 3px solid var(--primary);
         }
 
-        .hero h1 { color: var(--primary-yellow); font-size: 2.5rem; margin-bottom: 10px; }
+        .hero h1 { 
+            color: var(--primary); 
+            font-size: 1.8rem; 
+            margin-bottom: 8px;
+        }
 
-        .services { padding: 30px 15px; display: flex; flex-direction: column; gap: 15px; margin-bottom: 120px; }
+        .hero p { font-size: 0.9rem; opacity: 0.9; }
 
-        .card { background: #1e1e1e; padding: 20px; border-radius: 12px; border-left: 5px solid var(--primary-yellow); }
+        /* Kartlar - Genişlik %100 değil, ekrana sığacak şekilde */
+        .services { 
+            padding: 20px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 12px;
+            margin-bottom: 100px; /* Butonların üstüne binmemesi için */
+        }
 
-        /* İletişim Butonları Paneli */
+        .card { 
+            background: #1a1a1a; 
+            padding: 15px; 
+            border-radius: 8px; 
+            border-left: 4px solid var(--primary);
+        }
+
+        .card h3 { font-size: 1.1rem; margin-bottom: 5px; color: var(--primary); }
+        .card p { font-size: 0.85rem; color: #ccc; }
+
+        /* Alt İletişim Çubuğu - Sığmayan Kısım Burasıydı */
         .contact-bar {
             position: fixed;
             bottom: 0;
+            left: 0;
             width: 100%;
-            background: rgba(0,0,0,0.9);
-            padding: 15px;
+            background: #000;
+            padding: 10px;
             display: flex;
-            gap: 10px;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
-            z-index: 1000;
+            gap: 8px;
+            border-top: 1px solid #333;
+            z-index: 9999;
         }
 
         .btn {
-            flex: 1;
-            padding: 15px;
-            border-radius: 10px;
+            flex: 1; /* İki butonu eşit böler */
+            padding: 12px 5px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: bold;
-            text-align: center;
+            font-size: 0.85rem; /* Yazıyı biraz küçülttük ki sığsın */
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            font-size: 0.9rem;
+            gap: 5px;
+            white-space: nowrap; /* Yazıyı alt satıra atmaz */
         }
 
-        .call-btn { background: var(--primary-yellow); color: black; }
-        .msg-btn { background: var(--whatsapp-green); color: white; }
+        .call-btn { background: var(--primary); color: #000; }
+        .msg-btn { background: var(--whatsapp); color: #fff; }
 
-        svg { width: 20px; height: 20px; fill: currentColor; }
+        svg { width: 18px; height: 18px; fill: currentColor; }
     </style>
 </head>
 <body>
 
     <section class="hero">
         <h1>ONUR KAYA</h1>
-        <p>7/24 Elektrik Arıza & Onarım</p>
-        <p style="font-size: 0.8rem; opacity: 0.8;">Hızlı • Güvenilir • Garantili</p>
+        <p>⚡ 7/24 Profesyonel Elektrik Servisi</p>
+        <p>Hızlı Müdahale • Güvenli İşçilik</p>
     </section>
 
     <section class="services">
         <div class="card">
-            <h3>⚡ Acil Arıza Servisi</h3>
-            <p>Sigorta atması ve kablo yanmalarına anında müdahale.</p>
+            <h3>Acil Arıza</h3>
+            <p>Sigorta, priz ve tesisat sorunlarına kesin çözüm.</p>
         </div>
         <div class="card">
-            <h3>💡 Aydınlatma & Montaj</h3>
-            <p>Avize, LED şerit ve bahçe aydınlatma sistemleri.</p>
+            <h3>Aydınlatma</h3>
+            <p>Avize montajı ve dekoratif LED sistemleri.</p>
         </div>
         <div class="card">
-            <h3>🌐 İnternet & Uydu</h3>
-            <p>Kablo çekimi, sinyal sorunları ve modem kurulumu.</p>
+            <h3>İnternet / Uydu</h3>
+            <p>İnternet arızaları ve kablo çekim işlemleri.</p>
         </div>
     </section>
 
@@ -92,15 +126,11 @@
             HEMEN ARA
         </a>
         
-        <a href="https://wa.me/905352312457?text=Merhaba%20Onur%20Usta%2C%20bir%20elektrik%20arızası%20için%20yazıyorum." class="btn msg-btn">
+        <a href="https://wa.me/905352312457?text=Merhaba%20Onur%20Usta" class="btn msg-btn">
             <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42 1.56 1.56 2.41 3.63 2.41 5.83 0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.188 8.188 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.13 0-.35.05-.54.26-.19.21-.72.7-.72 1.7s.73 1.97.83 2.11c.11.14 1.43 2.19 3.47 3.07.48.21.86.34 1.15.44.49.15.93.13 1.29.08.39-.05 1.21-.5 1.38-.98.17-.48.17-.89.12-.98-.05-.08-.18-.13-.38-.23s-1.21-.6-1.4-.67-.32-.1-.47.12c-.15.21-.57.7-.7 1-.13.31-.26.35-.46.25-.19-.09-.82-.3-1.57-.97-.58-.52-.97-1.16-1.09-1.37-.12-.21-.01-.32.09-.42s.19-.23.29-.34c.1-.11.13-.19.2-.31.07-.12.03-.23-.02-.33-.05-.1-.47-1.14-.64-1.55-.17-.4-.34-.35-.47-.35z"/></svg>
             WHATSAPP
         </a>
     </div>
-
-    <footer style="padding-bottom: 100px; text-align: center; font-size: 0.8rem; color: #555;">
-        &copy; 2026 Onur Kaya Elektrik.
-    </footer>
 
 </body>
 </html>
