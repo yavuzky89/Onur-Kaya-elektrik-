@@ -2,159 +2,495 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Onur Kaya Elektrik</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlowStore | Modern E-Ticaret</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --primary: #ffcc00;
-            --dark-bg: #000000;
-            --card-bg: #111111;
-            --whatsapp: #25d366;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-color: #fbbf24;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
-        body { background-color: var(--dark-bg); color: white; overflow-x: hidden; width: 100%; }
-
-        /* ÜST BİLGİ PANELİ - SİYAH TASARIM */
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1px; /* Çizgi efekti için */
-            background: #222; 
-            padding-bottom: 2px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
 
-        .info-item {
-            background: var(--dark-bg);
-            text-align: center;
-            padding: 15px 10px;
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
         }
 
-        .info-item h4 { font-size: 0.8rem; color: var(--primary); margin-bottom: 4px; }
-        .info-item p { font-size: 0.7rem; color: #888; }
-
-        /* BAŞLIK */
-        .main-header {
-            padding: 25px 20px;
-            text-align: center;
-            border-bottom: 2px solid var(--primary);
-            background: linear-gradient(to bottom, #000, #111);
-        }
-
-        .main-header h1 { font-size: 2rem; letter-spacing: 2px; color: var(--primary); }
-        .main-header p { font-size: 0.9rem; margin-top: 5px; color: #ccc; }
-
-        /* ESKİ HİZMET KARTLARI (Geri Geldi) */
-        .services {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 120px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 4px solid var(--primary);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            transition: 0.3s;
-        }
-
-        .card:active { transform: scale(0.97); }
-
-        .card h3 { font-size: 1.2rem; color: var(--primary); margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
-        .card p { font-size: 0.9rem; color: #bbb; line-height: 1.4; }
-
-        /* SABİT ALT BUTONLAR */
-        .contact-bar {
+        /* Header & Navbar */
+        header {
+            background-color: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
             position: fixed;
-            bottom: 0; left: 0; width: 100%;
-            background: rgba(0,0,0,0.95);
-            padding: 12px;
-            display: flex;
-            gap: 10px;
-            border-top: 1px solid #333;
-            z-index: 9999;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .btn {
-            flex: 1;
-            padding: 15px;
-            border-radius: 10px;
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
             text-decoration: none;
-            font-weight: bold;
-            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 1.2rem;
+            position: relative;
+        }
+
+        .icon-btn {
+            color: var(--text-main);
+            cursor: pointer;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .icon-btn:hover {
+            color: var(--accent-color);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background-color: var(--accent-color);
+            color: #000;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 50%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-tag {
+            color: var(--accent-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .cta-btn {
+            background-color: var(--accent-color);
+            color: #000;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(251, 191, 36, 0.2);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-circle {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(45deg, #1e293b, #334155);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            text-transform: uppercase;
+            border: 2px solid rgba(255,255,255,0.05);
         }
 
-        .call-btn { background: var(--primary); color: #000; }
-        .msg-btn { background: var(--whatsapp); color: #fff; }
+        .hero-circle i {
+            font-size: 10rem;
+            color: var(--accent-color);
+            opacity: 0.8;
+        }
 
-        svg { width: 20px; height: 20px; fill: currentColor; }
+        /* Products Section */
+        .products-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.03);
+            transition: transform 0.3s, border-color 0.3s;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(251, 191, 36, 0.3);
+        }
+
+        .product-img-box {
+            height: 250px;
+            background-color: rgba(15, 23, 42, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: var(--text-muted);
+            transition: color 0.3s;
+        }
+
+        .product-card:hover .product-img-box {
+            color: var(--accent-color);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-category {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .add-to-cart-btn {
+            background-color: rgba(255,255,255,0.05);
+            border: none;
+            color: var(--text-main);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: var(--accent-color);
+            color: #000;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #090d16;
+            padding: 3rem 2rem;
+            margin-top: 6rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+        }
+
+        .footer-content p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 8rem;
+            }
+            .hero-content p {
+                margin: 0 auto 2rem;
+            }
+            .nav-links {
+                display: none; /* Basitlik adına mobilde linkleri gizledik */
+            }
+            .hero-circle {
+                width: 280px;
+                height: 280px;
+            }
+            .hero-circle i {
+                font-size: 7rem;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <div class="info-grid">
-        <div class="info-item">
-            <h4>🚚 Adrese Teslim</h4>
-            <p>İstanbul Anadolu Yakası</p>
-        </div>
-        <div class="info-item">
-            <h4>🤝 Güvenli Ödeme</h4>
-            <p>Kapıda Güvenli Ödeme</p>
-        </div>
-        <div class="info-item">
-            <h4>😊 %100 Memnuniyet</h4>
-            <p>Mutlu Müşteriler</p>
-        </div>
-        <div class="info-item">
-            <h4>💬 Canlı Destek</h4>
-            <p>7/24 Özel Destek</p>
-        </div>
-    </div>
-
-    <header class="main-header">
-        <h1>ONUR KAYA</h1>
-        <p>Profesyonel Elektrik Hizmetleri</p>
+    <!-- Header / Navbar -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo"><i class="fa-solid fa-bolt"></i>Glow<span>Store</span></a>
+            <ul class="nav-links">
+                <li><a href="#">Ana Sayfa</a></li>
+                <li><a href="#products">Ürünler</a></li>
+                <li><a href="#">Kategoriler</a></li>
+                <li><a href="#">İletişim</a></li>
+            </ul>
+            <div class="nav-icons">
+                <div class="icon-btn"><i class="fa-solid fa-magnifying-glass"></i></div>
+                <div class="icon-btn" id="cart-icon">
+                    <i class="fa-solid fa-shopping-bag"></i>
+                    <span class="cart-badge" id="cart-count">0</span>
+                </div>
+            </div>
+        </nav>
     </header>
 
-    <section class="services">
-        <div class="card">
-            <h3>⚡ Acil Arıza Servisi</h3>
-            <p>Sigorta atması, kısa devre ve tesisat arızalarına 7/24 hızlı müdahale sağlıyoruz.</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-tag">Yeni Sezon Teknolojisi</span>
+            <h1>Geleceğin Standartları Burada</h1>
+            <p>En son teknoloji ürünleri, minimal tasarım ve maksimum performansla buluştu. Stilini ve gücünü yansıtacak seriyi keşfet.</p>
+            <a href="#products" class="cta-btn">Şimdi Keşfet <i class="fa-solid fa-arrow-right"></i></a>
         </div>
-        <div class="card">
-            <h3>💡 Aydınlatma Sistemleri</h3>
-            <p>Avize montajı, şerit LED uygulamaları ve dekoratif aydınlatma çözümleri.</p>
-        </div>
-        <div class="card">
-            <h3>🌐 İnternet & Data</h3>
-            <p>İnternet kablosu çekimi, modem kurulumu ve sinyal güçlendirme hizmetleri.</p>
-        </div>
-        <div class="card">
-            <h3>🛠️ Bakım & Onarım</h3>
-            <p>Priz değişimi, pano yenileme ve genel elektrik tesisat kontrolü.</p>
+        <div class="hero-image">
+            <div class="hero-circle">
+                <i class="fa-solid fa-headset"></i>
+            </div>
         </div>
     </section>
 
-    <div class="contact-bar">
-        <a href="tel:05352312457" class="btn call-btn">
-            <svg viewBox="0 0 24 24"><path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/></svg>
-            HEMEN ARA
-        </a>
-        
-        <a href="https://wa.me/905352312457?text=Merhaba%20OFiyat%20Alabilirmiyim" class="btn msg-btn">
-            <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42 1.56 1.56 2.41 3.63 2.41 5.83 0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.188 8.188 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.13 0-.35.05-.54.26-.19.21-.72.7-.72 1.7s.73 1.97.83 2.11c.11.14 1.43 2.19 3.47 3.07.48.21.86.34 1.15.44.49.15.93.13 1.29.08.39-.05 1.21-.5 1.38-.98.17-.48.17-.89.12-.98-.05-.08-.18-.13-.38-.23s-1.21-.6-1.4-.67-.32-.1-.47.12c-.15.21-.57.7-.7 1-.13.31-.26.35-.46.25-.19-.09-.82-.3-1.57-.97-.58-.52-.97-1.16-1.09-1.37-.12-.21-.01-.32.09-.42s.19-.23.29-.34c.1-.11.13-.19.2-.31.07-.12.03-.23-.02-.33-.05-.1-.47-1.14-.64-1.55-.17-.4-.34-.35-.47-.35z"/></svg>
-            WHATSAPP
-        </a>
-    </div>
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="section-title">
+            <h2>Öne Çıkan Ürünler</h2>
+            <p>Haftanın en çok tercih edilen popüler tasarımları</p>
+        </div>
 
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <i class="fa-solid fa-laptop"></i>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Bilgisayar</div>
+                    <div class="product-title">ProBook 14" Sleek</div>
+                    <div class="product-footer">
+                        <span class="product-price">24.999 TL</span>
+                        <button class="add-to-cart-btn" onclick="addToCart()"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Telefon</div>
+                    <div class="product-title">Zeta Phone 13 Pro</div>
+                    <div class="product-footer">
+                        <span class="product-price">19.450 TL</span>
+                        <button class="add-to-cart-btn" onclick="addToCart()"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <i class="fa-solid fa-watch-apple"></i>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Aksesuar</div>
+                    <div class="product-title">Glow Watch Series 7</div>
+                    <div class="product-footer">
+                        <span class="product-price">4.200 TL</span>
+                        <button class="add-to-cart-btn" onclick="addToCart()"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <i class="fa-solid fa-keyboard"></i>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Çevre Birimleri</div>
+                    <div class="product-title">Neon Mechanical Keyboard</div>
+                    <div class="product-footer">
+                        <span class="product-price">1.850 TL</span>
+                        <button class="add-to-cart-btn" onclick="addToCart()"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 GlowStore. Tüm Hakları Saklıdır.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp İletişim Butonu -->
+    <a href="https://wa.me/905000000000" class="whatsapp-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Basit Sepet Simülasyonu Scripti -->
+    <script>
+        let cartCount = 0;
+        function addToCart() {
+            cartCount++;
+            document.getElementById('cart-count').innerText = cartCount;
+            
+            // Küçük bir görsel efekt
+            const badge = document.getElementById('cart-count');
+            badge.style.transform = 'scale(1.3)';
+            setTimeout(() => {
+                badge.style.transform = 'scale(1)';
+            }, 200);
+        }
+    </script>
 </body>
 </html>
